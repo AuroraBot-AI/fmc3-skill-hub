@@ -1,5 +1,7 @@
 # fmc3-skill-hub
 
+[English](README.md) | [简体中文](README.zh-CN.md)
+
 Shared [Claude Code](https://claude.com/claude-code) skills for the fmc3 team.
 
 Each subdirectory is a self-contained skill (a `SKILL.md` file with frontmatter Claude reads on session start). Drop the directory into `~/.claude/skills/` (user-level) or `<project>/.claude/skills/` (project-level) and Claude will pick it up.
