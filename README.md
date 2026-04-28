@@ -1,4 +1,4 @@
-# fmc3-skill_hub
+# fmc3-skill-hub
 
 Shared [Claude Code](https://claude.com/claude-code) skills for the fmc3 team.
 
@@ -13,26 +13,26 @@ Each subdirectory is a self-contained skill (a `SKILL.md` file with frontmatter 
 ## Install (user-level, all skills)
 
 ```bash
-git clone https://github.com/<your-username>/fmc3-skill_hub.git ~/fmc3-skill_hub
+git clone https://github.com/<your-username>/fmc3-skill-hub.git ~/fmc3-skill-hub
 mkdir -p ~/.claude/skills
-ln -s ~/fmc3-skill_hub/add-fmc3-user ~/.claude/skills/add-fmc3-user
+ln -s ~/fmc3-skill-hub/add-fmc3-user ~/.claude/skills/add-fmc3-user
 ```
 
 To install every skill in one shot:
 
 ```bash
-for d in ~/fmc3-skill_hub/*/; do
+for d in ~/fmc3-skill-hub/*/; do
   ln -sfn "$d" ~/.claude/skills/"$(basename "$d")"
 done
 ```
 
-Pull updates with `git -C ~/fmc3-skill_hub pull`.
+Pull updates with `git -C ~/fmc3-skill-hub pull`.
 
 ## Install (project-level, single repo)
 
 ```bash
 mkdir -p .claude/skills
-ln -s /path/to/fmc3-skill_hub/add-fmc3-user .claude/skills/add-fmc3-user
+ln -s /path/to/fmc3-skill-hub/add-fmc3-user .claude/skills/add-fmc3-user
 ```
 
 ## Adding a new skill
