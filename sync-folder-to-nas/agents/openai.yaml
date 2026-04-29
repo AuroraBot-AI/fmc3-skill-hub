@@ -1,0 +1,4 @@
+interface:
+  display_name: "Sync Folder to NAS"
+  short_description: "Deduplicate local folders onto NAS"
+  default_prompt: "Use $sync-folder-to-nas to scan a local folder and sync non-duplicate files to the FermiBot NAS."
