@@ -11,6 +11,20 @@ Use the bundled shell wrappers for common `lerobot-edit-dataset` operations. The
 
 For the original tool notes, read `references/original-readme.md` when needed.
 
+## Runtime Environment
+
+Use the `lerobot-pi0` conda environment. The bundled scripts already invoke commands through:
+
+```bash
+conda run --no-capture-output -n lerobot-pi0
+```
+
+You do not need to `conda activate` first when using the scripts. Before editing datasets on a new machine, verify the tool exists:
+
+```bash
+conda run --no-capture-output -n lerobot-pi0 lerobot-edit-dataset --help
+```
+
 ## Tools
 
 - `scripts/merge_datasets.sh`: merge multiple source datasets into one output dataset.
