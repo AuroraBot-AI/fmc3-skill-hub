@@ -1,0 +1,4 @@
+interface:
+  display_name: "Pack Conda Envs"
+  short_description: "Deduplicate conda environment archives"
+  default_prompt: "Use $pack-conda-envs to package my current conda environment into the workspace without creating duplicate archives."

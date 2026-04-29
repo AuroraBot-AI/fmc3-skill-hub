@@ -13,6 +13,7 @@ fmc3 团队共享的 skill 仓库,这些 skill 可以同时给 [Claude Code](htt
 | [`add-fmc3-user/`](add-fmc3-user/SKILL.md) | 创建一个新的 fmc3-N 团队用户:系统账号、默认密码、workspace 目录、软链接、共享 `.bashrc`。 |
 | [`edit-lerobot-datasets/`](edit-lerobot-datasets/SKILL.md) | 合并、裁剪、删除本地 LeRobot 数据集里的特征。 |
 | [`mount-fermibot-nas/`](mount-fermibot-nas/SKILL.md) | 配置稳定的 systemd automount,用于访问 FermiBot NAS。 |
+| [`pack-conda-envs/`](pack-conda-envs/SKILL.md) | 把 conda 环境打包到 workspace 归档目录,并避免重复打包。 |
 | [`sync-folder-to-nas/`](sync-folder-to-nas/SKILL.md) | 扫描本地和 NAS 文件夹,只把非重复文件同步到 NAS。 |
 | [`upload2hf/`](upload2hf/SKILL.md) | 使用 fmc3 上传封装把本地数据集或模型目录上传到 Hugging Face Hub。 |
 
@@ -25,6 +26,7 @@ fmc3 团队共享的 skill 仓库,这些 skill 可以同时给 [Claude Code](htt
 | `add-fmc3-user` | 不需要 conda 环境。请在目标机器的普通 shell 里用 root/sudo 权限执行。 |
 | `edit-lerobot-datasets` | 使用 `lerobot-pi0` conda 环境,通过 `conda run --no-capture-output -n lerobot-pi0` 执行。需要 `lerobot-edit-dataset`。 |
 | `mount-fermibot-nas` | 不需要 conda 环境。请在目标机器的普通 shell 里用 root/sudo 权限执行。需要 `cifs-utils`,并能访问 `192.168.1.123`。 |
+| `pack-conda-envs` | 使用 `base` conda 环境,或任何能访问 `conda` 和 `conda-pack` 的 shell。归档默认写入 `/home/phl/workspace/conda-env-packs`。 |
 | `sync-folder-to-nas` | 不需要 conda 环境。使用系统 Python 3。需要 `/home/phl/FermiBotNas` 已挂载;未挂载时先用 `mount-fermibot-nas`。 |
 | `upload2hf` | 在 fmc3 机器上使用 base conda 环境:`conda activate base`,或确保 `/home/phl/miniconda3/bin/hf` 在 `PATH` 里。需要 Hugging Face CLI 命令 `hf`。 |
 
@@ -45,6 +47,7 @@ mkdir -p ~/.claude/skills
 ln -s ~/fmc3-skill-hub/add-fmc3-user ~/.claude/skills/add-fmc3-user
 ln -s ~/fmc3-skill-hub/edit-lerobot-datasets ~/.claude/skills/edit-lerobot-datasets
 ln -s ~/fmc3-skill-hub/mount-fermibot-nas ~/.claude/skills/mount-fermibot-nas
+ln -s ~/fmc3-skill-hub/pack-conda-envs ~/.claude/skills/pack-conda-envs
 ln -s ~/fmc3-skill-hub/sync-folder-to-nas ~/.claude/skills/sync-folder-to-nas
 ln -s ~/fmc3-skill-hub/upload2hf ~/.claude/skills/upload2hf
 ```
@@ -57,6 +60,7 @@ mkdir -p ~/.codex/skills
 ln -s ~/fmc3-skill-hub/add-fmc3-user ~/.codex/skills/add-fmc3-user
 ln -s ~/fmc3-skill-hub/edit-lerobot-datasets ~/.codex/skills/edit-lerobot-datasets
 ln -s ~/fmc3-skill-hub/mount-fermibot-nas ~/.codex/skills/mount-fermibot-nas
+ln -s ~/fmc3-skill-hub/pack-conda-envs ~/.codex/skills/pack-conda-envs
 ln -s ~/fmc3-skill-hub/sync-folder-to-nas ~/.codex/skills/sync-folder-to-nas
 ln -s ~/fmc3-skill-hub/upload2hf ~/.codex/skills/upload2hf
 ```
@@ -83,6 +87,7 @@ mkdir -p .claude/skills
 ln -s /path/to/fmc3-skill-hub/add-fmc3-user .claude/skills/add-fmc3-user
 ln -s /path/to/fmc3-skill-hub/edit-lerobot-datasets .claude/skills/edit-lerobot-datasets
 ln -s /path/to/fmc3-skill-hub/mount-fermibot-nas .claude/skills/mount-fermibot-nas
+ln -s /path/to/fmc3-skill-hub/pack-conda-envs .claude/skills/pack-conda-envs
 ln -s /path/to/fmc3-skill-hub/sync-folder-to-nas .claude/skills/sync-folder-to-nas
 ln -s /path/to/fmc3-skill-hub/upload2hf .claude/skills/upload2hf
 ```
@@ -94,6 +99,7 @@ mkdir -p .codex/skills
 ln -s /path/to/fmc3-skill-hub/add-fmc3-user .codex/skills/add-fmc3-user
 ln -s /path/to/fmc3-skill-hub/edit-lerobot-datasets .codex/skills/edit-lerobot-datasets
 ln -s /path/to/fmc3-skill-hub/mount-fermibot-nas .codex/skills/mount-fermibot-nas
+ln -s /path/to/fmc3-skill-hub/pack-conda-envs .codex/skills/pack-conda-envs
 ln -s /path/to/fmc3-skill-hub/sync-folder-to-nas .codex/skills/sync-folder-to-nas
 ln -s /path/to/fmc3-skill-hub/upload2hf .codex/skills/upload2hf
 ```
