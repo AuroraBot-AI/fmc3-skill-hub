@@ -1,0 +1,4 @@
+interface:
+  display_name: "Mount FermiBot NAS"
+  short_description: "Configure stable FermiBot NAS automount"
+  default_prompt: "Use $mount-fermibot-nas to configure stable access to the FermiBot NAS on this workstation."

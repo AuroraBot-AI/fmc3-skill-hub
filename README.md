@@ -11,6 +11,7 @@ Each subdirectory is a self-contained skill (a `SKILL.md` file with frontmatter 
 | Skill | Purpose |
 |---|---|
 | [`add-fmc3-user/`](add-fmc3-user/SKILL.md) | Provision a new fmc3-N team member: system account, password, workspace dir, symlinks, shared `.bashrc`. |
+| [`mount-fermibot-nas/`](mount-fermibot-nas/SKILL.md) | Configure stable systemd automount access to the FermiBot NAS. |
 | [`upload2hf/`](upload2hf/SKILL.md) | Upload local datasets or model directories to Hugging Face Hub with the fmc3 upload wrapper. |
 
 ## Runtime environments
@@ -20,7 +21,15 @@ Installing or linking skills does not require a conda environment. Activate the 
 | Skill | Runtime environment |
 |---|---|
 | `add-fmc3-user` | No conda environment. Run in a normal shell with root/sudo privileges on the target host. |
+| `mount-fermibot-nas` | No conda environment. Run in a normal shell with root/sudo privileges on the target host. Requires `cifs-utils` and network access to `192.168.1.123`. |
 | `upload2hf` | Use the base conda environment on fmc3 hosts: `conda activate base`, or make sure `/home/phl/miniconda3/bin/hf` is on `PATH`. Requires the Hugging Face CLI command `hf`. |
+
+Run the NAS mount setup after installing the skill:
+
+```bash
+cd ~/fmc3-skill-hub/mount-fermibot-nas
+sudo bash scripts/setup_fermibot_nas_automount.sh
+```
 
 ## Install (user-level, all skills)
 
@@ -30,6 +39,7 @@ Claude Code:
 git clone https://github.com/AuroraBot-AI/fmc3-skill-hub.git ~/fmc3-skill-hub
 mkdir -p ~/.claude/skills
 ln -s ~/fmc3-skill-hub/add-fmc3-user ~/.claude/skills/add-fmc3-user
+ln -s ~/fmc3-skill-hub/mount-fermibot-nas ~/.claude/skills/mount-fermibot-nas
 ln -s ~/fmc3-skill-hub/upload2hf ~/.claude/skills/upload2hf
 ```
 
@@ -39,6 +49,7 @@ Codex:
 git clone https://github.com/AuroraBot-AI/fmc3-skill-hub.git ~/fmc3-skill-hub
 mkdir -p ~/.codex/skills
 ln -s ~/fmc3-skill-hub/add-fmc3-user ~/.codex/skills/add-fmc3-user
+ln -s ~/fmc3-skill-hub/mount-fermibot-nas ~/.codex/skills/mount-fermibot-nas
 ln -s ~/fmc3-skill-hub/upload2hf ~/.codex/skills/upload2hf
 ```
 
@@ -62,6 +73,7 @@ Claude Code:
 ```bash
 mkdir -p .claude/skills
 ln -s /path/to/fmc3-skill-hub/add-fmc3-user .claude/skills/add-fmc3-user
+ln -s /path/to/fmc3-skill-hub/mount-fermibot-nas .claude/skills/mount-fermibot-nas
 ln -s /path/to/fmc3-skill-hub/upload2hf .claude/skills/upload2hf
 ```
 
@@ -70,6 +82,7 @@ Codex:
 ```bash
 mkdir -p .codex/skills
 ln -s /path/to/fmc3-skill-hub/add-fmc3-user .codex/skills/add-fmc3-user
+ln -s /path/to/fmc3-skill-hub/mount-fermibot-nas .codex/skills/mount-fermibot-nas
 ln -s /path/to/fmc3-skill-hub/upload2hf .codex/skills/upload2hf
 ```
 
