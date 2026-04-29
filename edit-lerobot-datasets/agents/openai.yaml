@@ -1,0 +1,4 @@
+interface:
+  display_name: "Edit LeRobot Datasets"
+  short_description: "Merge and clean LeRobot datasets"
+  default_prompt: "Use $edit-lerobot-datasets to merge, trim, or remove features from local LeRobot datasets."
