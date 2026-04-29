@@ -11,13 +11,15 @@ Each subdirectory is a self-contained skill (a `SKILL.md` file with frontmatter 
 | Skill | Purpose |
 |---|---|
 | [`add-fmc3-user/`](add-fmc3-user/SKILL.md) | Provision a new fmc3-N team member: system account, password, workspace dir, symlinks, shared `.bashrc`. |
+| [`upload2hf/`](upload2hf/SKILL.md) | Upload local datasets or model directories to Hugging Face Hub with the fmc3 upload wrapper. |
 
 ## Install (user-level, all skills)
 
 ```bash
-git clone https://github.com/<your-username>/fmc3-skill-hub.git ~/fmc3-skill-hub
+git clone https://github.com/AuroraBot-AI/fmc3-skill-hub.git ~/fmc3-skill-hub
 mkdir -p ~/.claude/skills
 ln -s ~/fmc3-skill-hub/add-fmc3-user ~/.claude/skills/add-fmc3-user
+ln -s ~/fmc3-skill-hub/upload2hf ~/.claude/skills/upload2hf
 ```
 
 To install every skill in one shot:
@@ -35,6 +37,7 @@ Pull updates with `git -C ~/fmc3-skill-hub pull`.
 ```bash
 mkdir -p .claude/skills
 ln -s /path/to/fmc3-skill-hub/add-fmc3-user .claude/skills/add-fmc3-user
+ln -s /path/to/fmc3-skill-hub/upload2hf .claude/skills/upload2hf
 ```
 
 ## Adding a new skill

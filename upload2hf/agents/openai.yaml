@@ -1,0 +1,4 @@
+interface:
+  display_name: "Upload to Hugging Face"
+  short_description: "Upload datasets and models to HF Hub"
+  default_prompt: "Use $upload2hf to upload this local dataset or model directory to Hugging Face."
